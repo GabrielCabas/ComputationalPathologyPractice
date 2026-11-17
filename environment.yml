@@ -1,0 +1,21 @@
+name: histology
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - openslide
+  - libvips
+  - pyvips
+  - jupyterlab
+  - ipykernel
+  - matplotlib
+  - scikit-learn
+  - umap-learn
+  - seaborn
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cpu
+      - torch
+      - torchvision
+      - kaggle
+      - "trident @ git+https://github.com/mahmoodlab/TRIDENT.git@v0.3.2"
