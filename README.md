@@ -16,7 +16,7 @@ Dos clases, cada una con su carpeta. Los notebooks se corren **en orden**; los `
 | `clase1/00_descargar_datos.ipynb` | `train.csv`, una lámina de PANDA y las features Virchow2 promediadas de ~10.600 láminas (~1,7 GB) |
 | `clase1/01_taller_I.ipynb` | Abrir una WSI, segmentar, cortar tiles, extraer features con Virchow2, PCA y k-means |
 | `clase1/02_taller_II.ipynb` | PCA + regresión logística sobre todas las láminas, GridSearchCV, métricas, matriz de confusión y curvas ROC |
-| `clase2/00_descargar_datos.ipynb` | Features Virchow2 **por parche** de ~1.550 láminas (~11 GB, `gabrielcabas/panda-preprocessed`) |
+| `clase2/00_descargar_datos.ipynb` | Features Virchow2 **por parche** de 400 láminas equilibradas por grado (~3 GB, `gabrielcabas/panda-preprocessed`), de a una y con reintentos |
 | `clase2/01_taller_I.ipynb` | ABMIL en PyTorch vs promedio + regresión logística, misma partición |
 | `clase2/02_taller_II.ipynb` | Heatmap de atención y parches más atendidos sobre la lámina de la clase 1 |
 | `environment.yml` | Entorno de Python con Trident (CPU) |

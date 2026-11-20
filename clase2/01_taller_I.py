@@ -105,7 +105,7 @@ print(sum(p.numel() for p in modelo.parameters()) / 1e6, "M parámetros")
 
 # %% [markdown]
 # ## 5. Entrenar
-# Las features no caben todas en memoria (~11 GB): se leen de disco lámina por lámina.
+# Las features de 400 láminas pesan ~3 GB: en vez de cargarlas todas, se leen de disco lámina por lámina.
 # Al entrenar se toma una muestra de hasta 1.024 parches por lámina (más rápido y actúa como aumentación).
 
 # %%
