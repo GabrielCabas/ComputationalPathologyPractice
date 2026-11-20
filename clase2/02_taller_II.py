@@ -37,7 +37,10 @@ fila = train.sample(1, random_state=42)
 LAMINA = fila.image_id.values[0]
 display(fila)
 
-slide = OpenSlideWSI(slide_path=str(DATA / "train_images" / f"{LAMINA}.tiff"), lazy_init=False)
+SLIDE = DATA / "train_images" / f"{LAMINA}.tiff"
+if not SLIDE.exists():                                    # copia incluida en el repositorio
+    SLIDE = Path("../muestras") / f"{LAMINA}.tiff"
+slide = OpenSlideWSI(slide_path=str(SLIDE), lazy_init=False)
 with h5py.File(f"output/trident/20x_224px_0px_overlap/features_virchow2/{LAMINA}.h5") as f:
     feats, coords = f["features"][:], f["coords"][:]
 with h5py.File(f"output/trident/20x_224px_0px_overlap/patches/{LAMINA}_patches.h5") as f:

@@ -54,6 +54,10 @@ muestra = train.sample(1, random_state=42)
 display(muestra)
 LAMINA = muestra.image_id.values[0]
 SLIDE = DATA / "train_images" / f"{LAMINA}.tiff"
+if not SLIDE.exists():                                    # si no corriste el 00, se usa la copia del repositorio
+    SLIDE = Path("../muestras") / f"{LAMINA}.tiff"
+assert SLIDE.exists(), f"No encuentro la lámina {LAMINA}.tiff: corre el notebook 00_descargar_datos"
+print("Lámina:", SLIDE)
 
 slide = OpenSlideWSI(slide_path=str(SLIDE), lazy_init=False)
 print("Dimensiones (nivel 0):", slide.width, "x", slide.height, "px")

@@ -108,6 +108,9 @@ def ordenar_existentes():
         shutil.rmtree(sub)
     for resto in list(DEST.glob("*.zip")) + list(DEST.glob("*.tmp")):
         resto.unlink()
+    for tmp in DEST.parent.glob("tmp*"):                  # carpetas temporales de una corrida interrumpida
+        if tmp.is_dir():
+            shutil.rmtree(tmp, ignore_errors=True)
 
 def completo(ruta):
     try:

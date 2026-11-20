@@ -64,11 +64,12 @@ pd.concat([tr.assign(split="train"), va.assign(split="val"), te.assign(split="te
 
 # %%
 def promedio(ids):
-    X = []
-    for i in ids:
-        with h5py.File(DATA / "slide_features_mean-virchow2" / f"{i}.h5") as f:
-            X.append(f["features"][:].ravel())
-    return np.array(X)
+    """Un vector por lámina: el promedio de sus parches (lo mismo que mean-virchow2 de la clase pasada)."""
+    X = np.empty((len(ids), 2560), dtype=np.float32)
+    for k, i in enumerate(ids):
+        with h5py.File(DATA / "features_virchow2" / f"{i}.h5") as f:
+            X[k] = f["features"][:].astype(np.float32).mean(0)
+    return X
 
 base = Pipeline([("pca", PCA(0.9, random_state=0)), ("sc", StandardScaler()),
                  ("lr", LogisticRegression(C=0.1, max_iter=3000))])
